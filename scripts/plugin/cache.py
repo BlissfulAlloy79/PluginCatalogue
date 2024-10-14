@@ -2,6 +2,7 @@ import hashlib
 import json
 import zipfile
 from io import BytesIO
+from pathlib import Path
 from typing import TYPE_CHECKING, Set
 
 from common import constants, log
@@ -15,7 +16,7 @@ if TYPE_CHECKING:
 
 
 class PluginRequestCacheManager:
-	def __init__(self, plugin: 'Plugin', cache_file_path: str):
+	def __init__(self, plugin: 'Plugin', cache_file_path: Path):
 		self.plugin = plugin
 		self.cache_file_path = cache_file_path
 
@@ -38,7 +39,7 @@ class PluginRequestCacheManager:
 					self.__cache.asset_data.pop(asset_id)
 
 	def dump_for_save(self) -> dict:
-		cache = self.__cache.copy(deep=True)
+		cache = self.__cache.model_copy(deep=True)
 		for page in list(cache.release_pages.keys()):
 			if page not in self.__used_release_page:
 				cache.release_pages.pop(page)
@@ -80,11 +81,12 @@ class PluginRequestCacheManager:
 				except KeyError:
 					req_buf = b''
 
-			data = AssetData()
-			data.meta = MetaInfo.of(json.loads(meta_buf), req_buf.decode('utf8'))
-			data.size = len(file_buf)
-			data.hash_md5 = hashlib.md5(file_buf).hexdigest()
-			data.hash_sha256 = hashlib.sha256(file_buf).hexdigest()
+			data = AssetData(
+				meta=MetaInfo.of(json.loads(meta_buf), req_buf.decode('utf8')),
+				size=len(file_buf),
+				hash_md5=hashlib.md5(file_buf).hexdigest(),
+				hash_sha256=hashlib.sha256(file_buf).hexdigest(),
+			)
 			self.__cache.asset_data[asset_id] = data
 
 		self.__used_asset_data.add(asset_id)

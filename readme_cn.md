@@ -1,6 +1,6 @@
 [English](readme.md) | **中文**
 
-<h1 align="center">MCDReforged PluginCatalogue</h1>
+<h1 align="center">MCDReforged 插件仓库</h1>
 
 <p align="center">
   一个用于列出 <a href="https://github.com/Fallen-Breath/MCDReforged">MCDReforged</a> 插件的仓库。
@@ -17,10 +17,12 @@
 
 <br>
 
-**主插件目录** 仅包含支持 MCDReforged >=2.x 的插件
+**主插件目录** 仅包含支持 MCDReforged >=2.x 的插件  
+若上方链接无法访问，或希望在 Github 中浏览，请访问 [此处](https://github.com/MCDReforged/PluginCatalogue/blob/catalogue/readme-zh_cn.md)
 
-**旧插件目录** 收录早期版本 MCDR 的插件。这些过时的插件可能无法兼容当前版本的 MCDR，请谨慎使用
+**旧插件目录** 收录早期版本 MCDR 的插件  
+这些过时的插件可能无法兼容当前版本的 MCDR，请谨慎使用
 
-如果你想添加你的插件到插件仓库中，不妨交个 PR。查看 [文档](https://mcdreforged.readthedocs.io/zh_CN/latest/plugin_dev/plugin_catalogue.html) 以了解更多信息
+如果你想添加你的插件到插件仓库中，不妨交个 PR。查看 [文档](https://docs.mcdreforged.com/zh-cn/latest/plugin_dev/plugin_catalogue.html) 和 [贡献指南](CONTRIBUTING_cn.md) 以了解更多信息
 
 你可以在 [这里](https://github.com/MCDReforged/PluginCatalogue/tree/meta) 了解到插件仓库提供的插件数据
